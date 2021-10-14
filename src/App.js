@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Expenses from './components/expenses/Expenses';
 import NewExpense from './components/newExpense/NewExpense';
+import {v4 as uuid} from 'uuid';
 
-const expenses = [
+const DUMMY = [
   {
     title: 'Car Insurance',
     amount: 297.67,
@@ -30,8 +31,11 @@ const expenses = [
 ];
 
 const App = () => {
+  const [expenses, setExpenses] = useState(DUMMY)
   const onAddExpense = (data) => {
-    console.log(data)
+    setExpenses((prevState) => {
+      return [{...data, id: uuid()}, ...prevState]
+    });
   }
   return (
     <div>
