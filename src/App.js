@@ -30,9 +30,12 @@ const expenses = [
 ];
 
 const App = () => {
+  const onAddExpense = (data) => {
+    console.log(data)
+  }
   return (
     <div>
-      <NewExpense />
+      <NewExpense saveExpenseData={onAddExpense} />
       <Expenses expenses={expenses} />
     </div>
   );
